@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MemeMeViewController.swift
 //  Image Picker Experiment
 //
 //  Created by Gerry Morales Meza on 5/23/18.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var imagePicker: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var textFieldTop: UITextField!
     @IBOutlet weak var textFieldBottom: UITextField!
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var toolBar: UIToolbar!
     
     
@@ -71,39 +71,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textFieldTop.textAlignment = .center
-        textFieldBottom.textAlignment = .center
-        textFieldTop.defaultTextAttributes = memeTextAttributes
-        textFieldBottom.defaultTextAttributes = memeTextAttributes
-        textFieldTop.delegate = textFieldDelegate
-        textFieldBottom.delegate = textFieldDelegate
-        textFieldTop.isEnabled = false
-        textFieldBottom.isEnabled = false
+        setTextField(textfield: textFieldTop)
+        setTextField(textfield: textFieldBottom)
         shareButton.isEnabled = false
         
     }
+    
+    func setTextField(textfield: UITextField) {
+        textfield.textAlignment = .center
+        textfield.defaultTextAttributes = memeTextAttributes
+        textfield.delegate = textFieldDelegate
+        textfield.isEnabled = false
+    }
 
     
-    @IBAction func pickImage(_ sender: Any) {
+    @IBAction func pickImage(_ sender: UIBarButtonItem) {
         let pickerController = UIImagePickerController()
         pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
+        if(sender.tag == 1) {
+            pickerController.sourceType = .photoLibrary
+        } else {
+            pickerController.sourceType = .camera
+        }
+        
         present(pickerController, animated: true, completion: nil)
     }
     
-    @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
-    }
+
     
     func imagePickerController(_ picker: UIImagePickerController,
                                         didFinishPickingMediaWithInfo info: [String : Any]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePicker.image = image
-            imagePicker.contentMode = .scaleAspectFill
+            imagePicker.contentMode = .scaleAspectFit
             textFieldTop.text = "TOP"
             textFieldBottom.text = "BOTTOM"
             textFieldTop.isEnabled = true
@@ -118,12 +118,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     
-    struct Meme {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }
+
     
     
     func generateMemedImage() -> UIImage {
@@ -165,7 +160,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let activityViewController = UIActivityViewController(activityItems: [meme], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         activityViewController.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
-            self.save(memedImage: meme)
+            if (completed) {
+                self.save(memedImage: meme)
+            }
+            
         }
         self.present(activityViewController, animated: true, completion: nil)
         
