@@ -39,15 +39,15 @@
                                             </barButtonItem>
                                         </items>
                                     </toolbar>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTY-Vc-NAc" userLabel="Top Text">
-                                        <rect key="frame" x="184" y="72" width="8" height="17"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jTY-Vc-NAc" userLabel="Top Text">
+                                        <rect key="frame" x="10" y="72" width="355" height="17"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0sj-Qr-2ir" userLabel="Bottom Text">
-                                        <rect key="frame" x="183.5" y="598" width="8" height="17"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0sj-Qr-2ir" userLabel="Bottom Text">
+                                        <rect key="frame" x="10" y="598" width="355" height="17"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -57,9 +57,12 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="rks-gZ-rD2" firstAttribute="leading" secondItem="uAe-fe-bIt" secondAttribute="leading" id="1l0-tU-FgQ"/>
+                                    <constraint firstItem="0sj-Qr-2ir" firstAttribute="leading" secondItem="uAe-fe-bIt" secondAttribute="leading" constant="10" id="7EU-qa-c92"/>
                                     <constraint firstItem="0sj-Qr-2ir" firstAttribute="centerX" secondItem="uAe-fe-bIt" secondAttribute="centerX" id="Gw2-8d-1dD"/>
                                     <constraint firstItem="rks-gZ-rD2" firstAttribute="top" secondItem="uAe-fe-bIt" secondAttribute="top" id="L7w-pY-i1T" userLabel="Image Picker.top = Safe Area.top"/>
+                                    <constraint firstAttribute="trailing" secondItem="jTY-Vc-NAc" secondAttribute="trailing" constant="10" id="MCj-hO-yeQ"/>
                                     <constraint firstItem="mjH-BU-zRS" firstAttribute="top" secondItem="0sj-Qr-2ir" secondAttribute="bottom" constant="8" id="ND9-oW-j3M"/>
+                                    <constraint firstItem="jTY-Vc-NAc" firstAttribute="leading" secondItem="uAe-fe-bIt" secondAttribute="leading" constant="10" id="PiA-B5-ntE"/>
                                     <constraint firstAttribute="bottom" secondItem="rks-gZ-rD2" secondAttribute="bottom" id="QGa-Ji-Evm"/>
                                     <constraint firstAttribute="bottom" secondItem="mjH-BU-zRS" secondAttribute="bottom" id="YsD-om-Q86"/>
                                     <constraint firstAttribute="trailing" secondItem="mjH-BU-zRS" secondAttribute="trailing" id="gkp-zR-GUC"/>
@@ -67,6 +70,7 @@
                                     <constraint firstAttribute="trailing" secondItem="rks-gZ-rD2" secondAttribute="trailing" id="mfd-9H-vlH"/>
                                     <constraint firstItem="jTY-Vc-NAc" firstAttribute="centerX" secondItem="uAe-fe-bIt" secondAttribute="centerX" id="o4Q-Sg-VBI"/>
                                     <constraint firstItem="jTY-Vc-NAc" firstAttribute="top" secondItem="uAe-fe-bIt" secondAttribute="top" constant="72" id="tSz-cT-4Cy"/>
+                                    <constraint firstAttribute="trailing" secondItem="0sj-Qr-2ir" secondAttribute="trailing" constant="10" id="vjT-Ow-ETC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -90,6 +94,8 @@
                         <outlet property="cameraButton" destination="y9t-fu-taX" id="EcO-Rk-bs1"/>
                         <outlet property="imagePicker" destination="rks-gZ-rD2" id="V0Z-Eh-pbs"/>
                         <outlet property="shareButton" destination="dTl-fe-BdS" id="eqb-0h-97r"/>
+                        <outlet property="textFieldBottom" destination="0sj-Qr-2ir" id="mLF-Sn-YqP"/>
+                        <outlet property="textFieldTop" destination="jTY-Vc-NAc" id="4jO-z3-owq"/>
                         <outlet property="toolBar" destination="mjH-BU-zRS" id="aZd-OF-3vp"/>
                     </connections>
                 </viewController>

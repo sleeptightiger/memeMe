@@ -104,6 +104,8 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             imagePicker.image = image
             imagePicker.contentMode = .scaleAspectFit
+            textFieldTop.textAlignment = .center
+            textFieldBottom.textAlignment = .center
             textFieldTop.text = "TOP"
             textFieldBottom.text = "BOTTOM"
             textFieldTop.isEnabled = true
@@ -128,7 +130,6 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         self.navigationController?.isToolbarHidden = true
         shareButton.isEnabled = false
         toolBar.isHidden = true
-        shareButton.backgroundColor = UIColor.clear
         
         
         
@@ -143,7 +144,6 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         navigationController?.isToolbarHidden = false
         shareButton.isEnabled = true
         toolBar.isHidden = false
-        shareButton.backgroundColor = UIColor.white
         return memedImage
     }
     
