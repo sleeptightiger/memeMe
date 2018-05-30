@@ -141,7 +141,6 @@ class MemeMeViewController: UIViewController, UIImagePickerControllerDelegate, U
         
         // TODO: Show toolbar and navbar
         self.navigationController?.isNavigationBarHidden = false
-        navigationController?.isToolbarHidden = false
         shareButton.isEnabled = true
         toolBar.isHidden = false
         return memedImage
